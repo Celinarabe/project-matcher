@@ -1,0 +1,26 @@
+query RepoList($name_input:String!, $label_input:String!,$order_input:RepositoryOrder!, ) {
+    topic(name: $name_input) {
+        repositories(first: 30, orderBy: $order_input) {
+            edges {
+                node {
+                    id
+                    nameWithOwner
+                    label(name: $label_input) {
+                        id
+                        name
+                        issues(first:3) {
+                            edges {
+                                node {
+                                    id
+                                    title
+                                }
+                            }
+                        }
+                    }
+                    description
+                    openGraphImageUrl
+                }
+            }
+        }
+    }
+}
