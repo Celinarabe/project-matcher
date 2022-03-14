@@ -1,31 +1,42 @@
 package com.example.project_matcher
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import apolloClient
+import com.example.project_matcher.databinding.FragmentRepoListBinding
+import com.example.rocketreserver.RepoListQuery
+import com.example.rocketreserver.type.OrderDirection
+import com.example.rocketreserver.type.RepositoryOrder
+import com.example.rocketreserver.type.RepositoryOrderField
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RepoListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class RepoListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    //view binding
+    private var _binding: FragmentRepoListBinding? = null
+    //non null assertion when you know its not null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        //api call - need to move this to presenter?
+        lifecycleScope.launchWhenResumed {
+            val response = apolloClient(requireContext()).query(RepoListQuery(
+                order_input = RepositoryOrder(
+                    RepositoryOrderField.STARGAZERS,
+                    OrderDirection.DESC
+                ),
+                name_input = "android",
+                label_input = "help wanted"
+            )).execute()
+            Log.d("LaunchList", "Success ${response.data}")
         }
     }
 
@@ -33,27 +44,19 @@ class RepoListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_repo_list, container, false)
+        _binding = FragmentRepoListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RepoListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RepoListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnLogout.setOnClickListener {
+            Firebase.auth.signOut()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
