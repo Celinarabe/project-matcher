@@ -19,53 +19,40 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class AuthActivity : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
+class AuthActivity : FirebaseAuthProvider() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-
-        // Initialize Firebase Auth
-        auth = Firebase.auth
     }
 
     public override fun onStart() {
         super.onStart()
-
         findViewById<Button>(R.id.btnLogin).setOnClickListener { logIn() }
     }
 
     private fun logIn() {
-        val scopes = listOf("public_repo")
-        val provider = OAuthProvider.newBuilder("github.com")
-        provider.scopes = scopes
         auth
-            .startActivityForSignInWithProvider( /* activity= */this, provider.build())
+            .startActivityForSignInWithProvider(this, provider.build())
             .addOnSuccessListener {
                 val credential = it.credential as OAuthCredential;
                 val token = credential.accessToken
                 saveToken(token)
-                redirectToMain()
+                redirect(this, MainActivity::class.java)
             }
             .addOnFailureListener(
                 OnFailureListener {
                     // Handle failure.
                 }
             )
-        }
+    }
 
-    private fun saveToken(token: String?) {
+    fun saveToken(token: String?) {
         val sharedPref = getSharedPreferences(
-           "shared_prefs", Context.MODE_PRIVATE)
+            "shared_prefs", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.apply {
             putString("user_token", token)
         }.apply()
-    }
-
-    private fun redirectToMain() {
-        val intent = Intent(this, MainActivity::class.java)
-        this.startActivity(intent)
     }
 }
