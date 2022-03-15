@@ -8,10 +8,9 @@ import com.example.project_matcher.base.MainContract
 import com.example.project_matcher.databinding.ActivityMainBinding
 import com.example.rocketreserver.RepoListQuery
 
-class MainActivity : FirebaseAuthProvider(), MainContract.View {
+class MainActivity : FirebaseAuthProvider() {
     lateinit var binding: ActivityMainBinding
     lateinit var optionsMenu : Menu
-    var repoList:RepoListQuery.Repositories? = null
 
     private lateinit var presenter: MainContract.Presenter
 
@@ -23,16 +22,6 @@ class MainActivity : FirebaseAuthProvider(), MainContract.View {
         if(auth.currentUser == null){
             redirect(this, AuthActivity::class.java)
         }
-
-       setPresenter(MainPresenter(this, applicationContext))
-        presenter.onViewCreated()
-
-        findViewById<Button>(R.id.btnData).setOnClickListener {
-            repoList = presenter.onUserSearch("hi") }
-            Log.d("LaunchList", "yooooo$repoList")
-            var bundle : Bundle = Bundle()
-            var myMessage = "hi from celina"
-            bundle.putString("repo_list", myMessage)
 
     }
 
@@ -52,11 +41,4 @@ class MainActivity : FirebaseAuthProvider(), MainContract.View {
         presenter.onDestroy()
     }
 
-    override fun setPresenter(presenter: MainContract.Presenter) {
-        this.presenter = presenter
-    }
-
-    override fun displayRepos(repoList: RepoListQuery.Repositories) {
-
-    }
 }
