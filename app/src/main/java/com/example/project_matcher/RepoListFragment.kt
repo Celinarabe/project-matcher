@@ -69,9 +69,7 @@ class RepoListFragment : Fragment(), MainContract.View {
             Firebase.auth.signOut()
         }
         binding.btnData.setOnClickListener {
-            Log.d("LaunchList", "eeek")
-            repoList = mPresenter.onUserSearch("dis topic")
-            Log.d("LaunchList", "eeek$repoList")
+            mPresenter.onUserSearch("dis topic")
         }
     }
 
@@ -80,7 +78,7 @@ class RepoListFragment : Fragment(), MainContract.View {
         _binding = null
     }
 
-    override fun displayRepos(repoList: RepoListQuery.Repositories) {
-
+    override fun displayRepos(repoList: RepoListQuery.Repositories?) {
+        Log.d("LaunchList", "eeek$repoList")
     }
 }

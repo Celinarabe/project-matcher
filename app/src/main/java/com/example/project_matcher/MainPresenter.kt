@@ -22,7 +22,7 @@ class MainPresenter(private var view: MainContract.View?, private val context: C
         repository = RepoRepository(context)
     }
 
-    override fun onUserSearch(query: String) : RepoListQuery.Repositories? {
+    override fun onUserSearch(query: String) {
 
         launch {
             //deferred is an interface that extends Job and will wait for the result from the coroutine
@@ -31,11 +31,10 @@ class MainPresenter(private var view: MainContract.View?, private val context: C
                 return@async repository.getRepos(query)
             }
             repoList = deferred.await()
-
-//            Log.d("LaunchListtt", "hey guys $repoList")
+            view?.displayRepos(repoList)
         }
-        return repoList
     }
+
 
     override fun onDestroy() {
         this.view = null
