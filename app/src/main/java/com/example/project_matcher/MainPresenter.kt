@@ -6,6 +6,7 @@ import com.example.project_matcher.base.BasePresenter
 import com.example.project_matcher.base.MainContract
 import com.example.rocketreserver.RepoListQuery
 import kotlinx.coroutines.*
+import kotlin.concurrent.thread
 import kotlin.coroutines.CoroutineContext
 
 class MainPresenter(private var view: MainContract.View?, private val context: Context ): MainContract.Presenter, CoroutineScope
@@ -21,7 +22,8 @@ class MainPresenter(private var view: MainContract.View?, private val context: C
         repository = RepoRepository(context)
     }
 
-    override fun onUserSearch(query: String) {
+    override fun onUserSearch(query: String) : RepoListQuery.Repositories? {
+
         launch {
             //deferred is an interface that extends Job and will wait for the result from the coroutine
             //async allows us to obtain a value returned by the coroutine block
@@ -29,8 +31,10 @@ class MainPresenter(private var view: MainContract.View?, private val context: C
                 return@async repository.getRepos(query)
             }
             repoList = deferred.await()
-            Log.d("LaunchListtt", "hey guys $repoList")
+
+//            Log.d("LaunchListtt", "hey guys $repoList")
         }
+        return repoList
     }
 
     override fun onDestroy() {
