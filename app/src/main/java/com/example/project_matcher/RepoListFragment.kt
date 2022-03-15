@@ -36,7 +36,7 @@ class RepoListFragment : Fragment() {
                 name_input = "android",
                 label_input = "help wanted"
             )).execute()
-            Log.d("LaunchList", "Success ${response.data}")
+            Log.d("LaunchList", "Success ${response.data?.topic?.repositories?.edges?.elementAt(2)?.node}")
         }
     }
 

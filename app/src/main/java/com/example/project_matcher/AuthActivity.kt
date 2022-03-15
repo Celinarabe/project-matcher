@@ -24,11 +24,11 @@ class AuthActivity : FirebaseAuthProvider() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
+        findViewById<Button>(R.id.btnLogin).setOnClickListener { logIn() }
     }
 
     public override fun onStart() {
         super.onStart()
-        findViewById<Button>(R.id.btnLogin).setOnClickListener { logIn() }
     }
 
     private fun logIn() {
