@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RepoListFragment">
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/liRepoList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/repo_list_progress_description"
+        android:indeterminate="true" />
 
 
     <androidx.recyclerview.widget.RecyclerView

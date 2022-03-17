@@ -90,6 +90,7 @@ class RepoListFragment : Fragment(), MainContract.View {
 //    }
 
     override fun displayRepos(repoList: List<RepoListQuery.Edge?>?) {
+        binding.liRepoList.hide()
         val recyclerView = binding.rvRepoList
         recyclerView.adapter = RepoListAdapter(requireContext(), repoList)
         Log.d("LaunchList", "eeek${repoList}")
