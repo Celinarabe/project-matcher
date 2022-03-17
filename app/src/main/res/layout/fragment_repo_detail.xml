@@ -6,16 +6,15 @@
 
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DishDetailFragment">
+>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgSelectedDish"
+        android:id="@+id/imgRepo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="14"
         android:adjustViewBounds="true"
-        android:contentDescription="@string/dish_description"
-        android:scaleType="centerInside" />
+        android:contentDescription="@string/content_description_repo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,72 +22,115 @@
         android:orientation="vertical"
         android:padding="8dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="32dp">
 
             <TextView
-                android:id="@+id/tvDishName"
+                android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-
+                android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textSize="20sp"
                 tools:text="Spaghetti" />
 
             <TextView
-                android:id="@+id/tvNotRated"
+                android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="Not yet rated"
-                android:textColor="@color/gray"
-                android:textSize="14sp"
-                android:textStyle="italic" />
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary" />
 
-            <RatingBar
-                android:id="@+id/dishRatingBar"
-                style="?android:attr/ratingBarStyleSmall"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+            <!-- Title, secondary and supporting text -->
+            <TextView
+                android:id="@+id/tvIssueNumber1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="0"
-                android:stepSize="0.5"
-                android:visibility="gone" />
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:text="#0-01"
+                />
+
+            <TextView
+                android:id="@+id/tvIssueTitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                android:text="need heop here"
+                />
+
+
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <!-- Title, secondary and supporting text -->
+                <TextView
+                    android:id="@+id/tvIssueNumber2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:text="#0-01"
+                    />
+
+                <TextView
+                    android:id="@+id/tvIssueTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:text="need heop here"
+                    />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <!-- Title, secondary and supporting text -->
+                <TextView
+                    android:id="@+id/tvIssueNumber3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:text="#0-01"
+                    />
+
+                <TextView
+                    android:id="@+id/tvIssueTitle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:text="need heop here"
+                    />
+
+
+            </LinearLayout>
+
+
+
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvDishLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:visibility="gone"
-            tools:text="Olive Garden" />
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:textSize="14sp"
-            tools:text="08/24/2021" />
-
-        
-        <TextView
-            android:id="@+id/tvDishNotes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-
-            tools:text="ahhhmazing place" />
     </LinearLayout>
+</LinearLayout>

@@ -57,38 +57,6 @@ class RepoListFragment : Fragment(), MainContract.View {
         _binding = null
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.search_menu, menu)
-//        val sv = SearchView(context)
-//        val item = menu.findItem(R.id.btnSearchIcon)
-//        MenuItemCompat.setShowAsAction(
-//            item,
-//            MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW or MenuItemCompat.SHOW_AS_ACTION_IF_ROOM
-//        )
-//        MenuItemCompat.setActionView(item, sv)
-//        sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                Log.d("LaunchList", query!!)
-//                handleSearch(query!!)
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                Log.d("LaunchList", "tap")
-//                return false
-//            }
-//        })
-//    }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.btnSearch -> {
-////                handleIntent(in)
-//                true
-//            }
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
 
     override fun displayRepos(repoList: List<RepoListQuery.Edge?>?) {
         binding.liRepoList.hide()

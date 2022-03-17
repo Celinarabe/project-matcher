@@ -33,7 +33,7 @@ class RepoRepository (private val context: Context) {
                 label_input = "help wanted"
             )
         ).execute()
-        return response.data?.topic?.repositories?.edges
+        return response.data?.topic?.repositories?.edges?.filter { it?.node?.label != null }
 //     val client = apolloClient(context)
 //        client.query(
 //            RepoListQuery(
