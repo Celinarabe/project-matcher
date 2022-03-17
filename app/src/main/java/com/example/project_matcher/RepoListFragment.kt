@@ -109,6 +109,7 @@ class RepoListFragment : Fragment(), MainContract.View {
 //    }
 
     private fun handleSearch(query: String) {
+        Log.d("Lunch", query)
         presenter.onUserSearch(query.lowercase())
     }
 

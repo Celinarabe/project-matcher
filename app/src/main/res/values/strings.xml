@@ -8,14 +8,27 @@
     <string name="topic1">Android</string>
     <string name="topic2">COVID-19</string>
     <string name="topic3">Bot</string>
-    <string name="topic4">React</string>
-    <string name="topic5">Cryptocurrency</string>
+    <string name="topic4">GraphQL</string>
+    <string name="topic5">Bitcoin</string>
     <string name="topic6">Hacktoberfest</string>
-    <string name="topic7">Ansible</string>
-    <string name="topic8">Angular</string>
+    <string name="topic7">Linux</string>
+    <string name="topic8">Kotlin</string>
     <string name="topic9">API</string>
-    <string name="topic10">Awesome Lists</string>
+    <string name="topic10">Docker</string>
     <string name="desc1">Android is an operating system built by Google designed for mobile devices</string>
+    <string name="desc3">A bot is an application that runs automated tasks over the Internet.</string>
+    <string name="desc5">Bitcoin is a cryptocurrency developed by Satoshi Nakamoto.</string>
+    <string name="desc2">The coronavirus disease 2019 (COVID-19) is an infectious disease caused by SARS-CoV-2.</string>
+    <string name="desc4">GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.</string>
+    <string name="desc6">Hacktoberfest is a month-long celebration of open source software.</string>
+    <string name="desc7">Linux is an open source kernel.</string>
+
+    <string name="desc8">Kotlin is a statically typed programming language for multiplatform applications.</string>
+
+    <string name="desc9">An API (Application Programming Interface) is a collection of protocols and subroutines for building software.</string>
+
+    <string name="desc10">Docker is a platform built for developers to build and run applications.</string>
+
     <string name="option_logout">Log Out</string>
     <string name="repo_list_progress_description">Loading list of repositories</string>
 

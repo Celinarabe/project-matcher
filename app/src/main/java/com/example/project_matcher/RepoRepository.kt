@@ -29,7 +29,7 @@ class RepoRepository (private val context: Context) {
                     RepositoryOrderField.STARGAZERS,
                     OrderDirection.DESC
                 ),
-                name_input = "android",
+                name_input = query,
                 label_input = "help wanted"
             )
         ).execute()
