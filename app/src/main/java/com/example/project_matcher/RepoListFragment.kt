@@ -34,7 +34,8 @@ class RepoListFragment : Fragment(), MainContract.View {
         setPresenter(MainPresenter(this, requireContext()))
         setHasOptionsMenu(true);
         val query = navigationArgs.topicTitle
-        handleSearch(query)
+        handleSearch(query.lowercase())
+//        activity?.title = "{$query.replaceFirstChar{it.uppercase()}} Repositories"
     }
 
     override fun onCreateView(

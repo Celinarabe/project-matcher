@@ -8,6 +8,10 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.core.app.NavUtils
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.example.project_matcher.databinding.ActivityMainBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -15,15 +19,21 @@ import com.google.firebase.ktx.Firebase
 class MainActivity : FirebaseAuthProvider() {
     lateinit var binding: ActivityMainBinding
     lateinit var optionsMenu : Menu
+    private lateinit var navController: NavController
 
 //    private lateinit var presenter: MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setHasOptionsMenu(true);
+        getActionBar()?.setDisplayHomeAsUpEnabled(true);
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
+        navController = navHostFragment.navController
+        // Set up the action bar for use with the NavController
+        NavigationUI.setupActionBarWithNavController(this, navController)
 
 //        handleIntent(intent)
 
@@ -47,12 +57,18 @@ class MainActivity : FirebaseAuthProvider() {
                 handleLogout()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
 
         }
     }
 
-
+    /**
+     * Handle navigation when the user chooses Up from the action bar.
+     */
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 
 
 //    override fun onStart() {

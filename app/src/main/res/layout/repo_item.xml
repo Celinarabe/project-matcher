@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/ic_search"
+            app:srcCompat="@drawable/ic_no_photo"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/content_description_repo"
             />

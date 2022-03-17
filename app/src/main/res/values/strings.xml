@@ -4,6 +4,7 @@
     <string name="topic_search">Search for a topic</string>
     <string name="content_description_repo">Image for Repository</string>
     <string name="user_query_key">user_query_key</string>
+    <string name="repo_list_fragment_label">{topic_title} Repositories</string>
 
     <string name="topic1">Android</string>
     <string name="topic2">COVID-19</string>
@@ -31,5 +32,6 @@
 
     <string name="option_logout">Log Out</string>
     <string name="repo_list_progress_description">Loading list of repositories</string>
+    <string name="fragment_list_label">Select a Topic</string>
 
 </resources>

@@ -42,7 +42,7 @@ class TopicListFragment : Fragment() {
 //        binding.rvTopicList.setHasFixedSize(true)
     }
     private fun onTopicClicked(topic: Topic) {
-        val action = TopicListFragmentDirections.actionTopicListFragmentToRepoListFragment(requireContext().getString(topic.title).lowercase())
+        val action = TopicListFragmentDirections.actionTopicListFragmentToRepoListFragment(requireContext().getString(topic.title))
         this.findNavController().navigate(action)
     }
 //    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
