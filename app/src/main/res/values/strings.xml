@@ -16,5 +16,6 @@
     <string name="topic9">API</string>
     <string name="topic10">Awesome Lists</string>
     <string name="desc1">Android is an operating system built by Google designed for mobile devices</string>
+    <string name="option_logout">Log Out</string>
 
 </resources>

@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project_matcher.model.Topic
-import com.example.rocketreserver.RepoListQuery
-import org.w3c.dom.Text
 
-class TopicAdapter(private val context: Context, private val dataset : List<Topic>
-) : RecyclerView.Adapter<TopicAdapter.TopicViewHolder>() {
+class TopicListAdapter(private val context: Context,
+                       private val dataset : List<Topic>,
+                       private val onTopicClicked: (topic:Topic) -> Unit
+) : RecyclerView.Adapter<TopicListAdapter.TopicViewHolder>() {
 
     class TopicViewHolder(private val view: View):RecyclerView.ViewHolder(view) {
 
@@ -31,6 +31,7 @@ class TopicAdapter(private val context: Context, private val dataset : List<Topi
         val item = dataset?.get(position)
         holder.title.text = context.resources.getString(item.title)
         holder.description.text = context.resources.getString(item.description)
+        holder.itemView.setOnClickListener { onTopicClicked(item) }
     }
 
     override fun getItemCount() = dataset.size ?: 0

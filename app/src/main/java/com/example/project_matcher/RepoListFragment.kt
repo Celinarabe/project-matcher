@@ -4,9 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.SearchView
-import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.project_matcher.base.MainContract
 import com.example.project_matcher.databinding.FragmentRepoListBinding
 import com.example.rocketreserver.RepoListQuery
@@ -21,6 +20,7 @@ class RepoListFragment : Fragment(), MainContract.View {
     private val binding get() = _binding!!
 
     private lateinit var presenter: MainContract.Presenter
+    private val navigationArgs: RepoListFragmentArgs by navArgs()
 
     var repoList:List<RepoListQuery.Edge?>? = listOf()
 
@@ -33,10 +33,8 @@ class RepoListFragment : Fragment(), MainContract.View {
         super.onCreate(savedInstanceState)
         setPresenter(MainPresenter(this, requireContext()))
         setHasOptionsMenu(true);
-        Log.d("LaunchList", "fragggg")
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        val queryString = sharedPref.getString(getString(R.string.user_query_key), "android")
-//        handleIntent(intent)
+        val query = navigationArgs.topicTitle
+        handleSearch(query)
     }
 
     override fun onCreateView(
@@ -50,9 +48,6 @@ class RepoListFragment : Fragment(), MainContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.onViewCreated()
-
-        binding.btnLogout.setOnClickListener {handleLogout()}
-        binding.btnData.setOnClickListener {handleSearch("android") }
     }
 
     override fun onDestroyView() {
@@ -96,9 +91,8 @@ class RepoListFragment : Fragment(), MainContract.View {
 
     override fun displayRepos(repoList: List<RepoListQuery.Edge?>?) {
         val recyclerView = binding.rvRepoList
-        recyclerView.adapter = RepoAdapter(requireContext(), repoList)
+        recyclerView.adapter = RepoListAdapter(requireContext(), repoList)
         Log.d("LaunchList", "eeek${repoList}")
-        binding.tvGetStarted.visibility = View.GONE
 //        view.findNavController().navigate()
     }
 
@@ -117,7 +111,5 @@ class RepoListFragment : Fragment(), MainContract.View {
         presenter.onUserSearch(query.lowercase())
     }
 
-    fun handleLogout() {
-        Firebase.auth.signOut()
-    }
+
 }

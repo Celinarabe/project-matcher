@@ -16,6 +16,10 @@
         <action
             android:id="@+id/action_repoListFragment_to_topicListFragment"
             app:destination="@id/topicListFragment" />
+        <argument
+            android:name="topic_title"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
     <fragment
         android:id="@+id/repoDetailFragment"
@@ -34,5 +38,6 @@
         <action
             android:id="@+id/action_topicListFragment_to_repoListFragment"
             app:destination="@id/repoListFragment" />
+
     </fragment>
 </navigation>

@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project_matcher.data.Topics
 import com.example.project_matcher.databinding.FragmentTopicListBinding
+import com.example.project_matcher.model.Topic
 
 
 class TopicListFragment : Fragment() {
@@ -33,13 +35,16 @@ class TopicListFragment : Fragment() {
 //        load data
         val topicList = Topics().loadTopics()
         val recyclerView = binding.rvTopicList
-        recyclerView.adapter = TopicAdapter(requireContext(), topicList)
+        recyclerView.adapter = TopicListAdapter(requireContext(), topicList) { onTopicClicked(it) }
 
 
         Log.d("Lunch", topicList.toString())
 //        binding.rvTopicList.setHasFixedSize(true)
     }
-
+    private fun onTopicClicked(topic: Topic) {
+        val action = TopicListFragmentDirections.actionTopicListFragmentToRepoListFragment(requireContext().getString(topic.title).lowercase())
+        this.findNavController().navigate(action)
+    }
 //    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 //        inflater.inflate(R.menu.search_menu, menu)
 //

@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rocketreserver.RepoListQuery
 
-class RepoAdapter(private val context: Context, private val dataset : List<RepoListQuery.Edge?>?
-) : RecyclerView.Adapter<RepoAdapter.RepoViewHolder>() {
+class RepoListAdapter(private val context: Context, private val dataset : List<RepoListQuery.Edge?>?
+) : RecyclerView.Adapter<RepoListAdapter.RepoViewHolder>() {
 
     class RepoViewHolder(private val view: View):RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.tvTitle)
@@ -20,7 +20,7 @@ class RepoAdapter(private val context: Context, private val dataset : List<RepoL
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
         // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item, parent, false)
+            .inflate(R.layout.repo_item, parent, false)
         return RepoViewHolder(adapterLayout)
 
     }
