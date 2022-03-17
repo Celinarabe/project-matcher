@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/repoListFragment">
+    app:startDestination="@id/topicListFragment">
 
     <fragment
         android:id="@+id/repoListFragment"
@@ -13,10 +13,26 @@
         <action
             android:id="@+id/action_repoListFragment_to_repoDetailFragment"
             app:destination="@id/repoDetailFragment" />
+        <action
+            android:id="@+id/action_repoListFragment_to_topicListFragment"
+            app:destination="@id/topicListFragment" />
     </fragment>
     <fragment
         android:id="@+id/repoDetailFragment"
         android:name="com.example.project_matcher.RepoDetailFragment"
         android:label="fragment_repo_detail"
-        tools:layout="@layout/fragment_repo_detail" />
+        tools:layout="@layout/fragment_repo_detail" >
+        <action
+            android:id="@+id/action_repoDetailFragment_to_repoListFragment"
+            app:destination="@id/repoListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicListFragment"
+        android:name="com.example.project_matcher.TopicListFragment"
+        android:label="fragment_topic_list"
+        tools:layout="@layout/fragment_topic_list" >
+        <action
+            android:id="@+id/action_topicListFragment_to_repoListFragment"
+            app:destination="@id/repoListFragment" />
+    </fragment>
 </navigation>

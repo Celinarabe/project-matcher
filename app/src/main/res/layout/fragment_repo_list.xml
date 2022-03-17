@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".RepoListFragment">
 
-    <SearchView
-        android:id="@+id/svTopic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="@string/topic_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tvGetStarted"
         android:layout_width="wrap_content"
@@ -49,5 +39,18 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvGetStarted" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRepoList"
+        android:layout_width="match_parent"
+        android:layout_height="306dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/tvGetStarted"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

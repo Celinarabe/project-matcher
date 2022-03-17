@@ -42,7 +42,7 @@ class AuthActivity : FirebaseAuthProvider() {
             }
             .addOnFailureListener(
                 OnFailureListener {
-                    // Handle failure.
+                    // Handle failure with toast "There was an error with log in"
                 }
             )
     }

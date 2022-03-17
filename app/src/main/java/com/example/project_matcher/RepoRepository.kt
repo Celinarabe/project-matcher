@@ -8,7 +8,6 @@ import androidx.lifecycle.lifecycleScope
 import apolloClient
 import com.apollographql.apollo3.ApolloCall
 import com.apollographql.apollo3.ApolloClient
-
 import com.example.rocketreserver.RepoListQuery
 import com.example.rocketreserver.type.OrderDirection
 import com.example.rocketreserver.type.RepositoryOrder
@@ -21,8 +20,9 @@ class RepoRepository (private val context: Context) {
     var repoList: RepoListQuery.Repositories? = null
 
     //suspend keyword forces this method to be called from within a coroutine scope
-    suspend fun getRepos(query: String): RepoListQuery.Repositories? {
+    suspend fun getRepos(query: String): List<RepoListQuery.Edge?>? {
 //        api call - need to move this to presenter?
+
         val response = apolloClient(context).query(
             RepoListQuery(
                 order_input = RepositoryOrder(
@@ -33,7 +33,7 @@ class RepoRepository (private val context: Context) {
                 label_input = "help wanted"
             )
         ).execute()
-        return response.data?.topic?.repositories
+        return response.data?.topic?.repositories?.edges
 //     val client = apolloClient(context)
 //        client.query(
 //            RepoListQuery(
