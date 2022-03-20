@@ -6,7 +6,7 @@
 
 ## Project Matcher
 
-Project Matcher is an app that helps developers find projects to contribute to.
+Project Matcher is an app which helps developers find projects to contribute to.
 The app contains categories of interest and fetches live Github data of popular repositories
 that would like help!
 
