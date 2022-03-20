@@ -16,7 +16,7 @@ open class FirebaseAuthProvider : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Initialize Firebase Auth
+        // Initialize Firebase Auth Service
         auth = Firebase.auth
         provider.scopes = scopes
     }
