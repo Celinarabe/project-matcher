@@ -33,7 +33,7 @@ that would like help!
     3. Cards are used to display the lists of topics and repositories.
     4. An overflow menu is used to display the log out functionality.
     5. A progress indicator is used to provide user feedback while the app is fetching data from the GitHub endpoint.
-- SharedPreferences are used to store the user's GitHub Auth token with private context mode.
+- SharedPreferences is used to store the user's GitHub Auth token with private context mode.
 
 ## MVP Architecture
 
