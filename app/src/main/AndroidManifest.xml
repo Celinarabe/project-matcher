@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_matcher">
         <activity
-            android:name=".FirebaseAuthProvider"
+            android:name=".view.FirebaseAuthProvider"
             android:exported="false" />
         <activity
             android:name=".AuthActivity"

@@ -1,4 +1,4 @@
-package com.example.project_matcher
+package com.example.project_matcher.view
 
 import android.content.Context
 import android.content.Intent

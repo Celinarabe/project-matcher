@@ -1,6 +1,5 @@
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.network.okHttpClient
 import okhttp3.Interceptor
@@ -13,16 +12,13 @@ fun apolloClient(context: Context): ApolloClient {
     if (instance != null) {
         return instance!!
     }
-
     val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(AuthorizationInterceptor(context))
         .build()
-
     instance = ApolloClient.Builder()
         .serverUrl("https://api.github.com/graphql")
         .okHttpClient(okHttpClient)
         .build()
-
     return instance!!
 }
 

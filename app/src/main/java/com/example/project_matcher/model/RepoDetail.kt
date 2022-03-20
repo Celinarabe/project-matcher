@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.annotation.RequiresApi
-import java.io.FileDescriptor.`in`
 
 class RepoDetail(
     val nameWithOwner: String?,
@@ -18,17 +17,13 @@ class RepoDetail(
         parcel.readString(),
         parcel.readString(),
         parcel.createTypedArrayList(Issue.CREATOR)
-//        `in`.readList(products, Product::class.java.getClassLoader())
-//        parcel.readParcelableList<Issue>()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(nameWithOwner)
         parcel.writeString(description)
         parcel.writeString(openGraphImageUrl)
         parcel.writeTypedList(issueList)
-
     }
 
     override fun describeContents(): Int {
@@ -40,11 +35,9 @@ class RepoDetail(
         override fun createFromParcel(parcel: Parcel): RepoDetail {
             return RepoDetail(parcel)
         }
-
         override fun newArray(size: Int): Array<RepoDetail?> {
             return arrayOfNulls(size)
         }
     }
-
 }
 

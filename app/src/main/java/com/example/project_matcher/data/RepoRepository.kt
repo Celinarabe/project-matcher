@@ -1,23 +1,13 @@
-package com.example.project_matcher
+package com.example.project_matcher.data
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.lifecycle.lifecycleScope
 import apolloClient
-import com.apollographql.apollo3.ApolloCall
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.exception.ApolloException
 import com.example.project_matcher.model.Issue
 import com.example.project_matcher.model.RepoDetail
 import com.example.rocketreserver.RepoListQuery
 import com.example.rocketreserver.type.OrderDirection
 import com.example.rocketreserver.type.RepositoryOrder
 import com.example.rocketreserver.type.RepositoryOrderField
-import okhttp3.Call
-import java.util.*
-import java.util.concurrent.Callable
 
 class RepoRepository (private val context: Context) {
     var repoList: RepoListQuery.Repositories? = null
@@ -35,7 +25,6 @@ class RepoRepository (private val context: Context) {
                 )
             ).execute()
             val reposWithLabel = response?.data?.topic?.repositories?.edges?.filter { it?.node?.label != null  }
-
             if (reposWithLabel != null) {
                 return convertRepos(reposWithLabel.filter { it!!.node?.label?.issues?.edges?.size!! >= 3 }.map{it!!})
             }

@@ -1,7 +1,6 @@
 package com.example.project_matcher
 
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.project_matcher.model.RepoDetail
-import com.example.rocketreserver.RepoListQuery
 
 class RepoListAdapter(private val context: Context, private val dataset: List<RepoDetail>?, private val onRepoClicked: (repo :RepoDetail) -> Unit
 ) : RecyclerView.Adapter<RepoListAdapter.RepoViewHolder>() {
@@ -19,15 +17,12 @@ class RepoListAdapter(private val context: Context, private val dataset: List<Re
         val title: TextView = view.findViewById(R.id.tvTitle)
         val description: TextView = view.findViewById(R.id.tvDescription)
         val image : ImageView = view.findViewById(R.id.imgRepo)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
-        // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.repo_item, parent, false)
         return RepoViewHolder(adapterLayout)
-
     }
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
@@ -42,7 +37,5 @@ class RepoListAdapter(private val context: Context, private val dataset: List<Re
             item?.let { it1 -> onRepoClicked(it1) }
         }
     }
-
-
     override fun getItemCount() = dataset?.size ?: 0
 }

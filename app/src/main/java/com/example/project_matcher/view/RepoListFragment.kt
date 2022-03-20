@@ -1,34 +1,31 @@
-package com.example.project_matcher
+package com.example.project_matcher.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.project_matcher.R
+import com.example.project_matcher.RepoListAdapter
 import com.example.project_matcher.base.MainContract
 import com.example.project_matcher.databinding.FragmentRepoListBinding
-import com.example.project_matcher.model.Issue
 import com.example.project_matcher.model.RepoDetail
-import com.example.rocketreserver.RepoListQuery
+import com.example.project_matcher.presenter.MainPresenter
 import com.google.android.material.snackbar.Snackbar
 
 
 class RepoListFragment : Fragment(), MainContract.View {
     private var _binding: FragmentRepoListBinding? = null
     private val binding get() = _binding
-
     private lateinit var presenter: MainContract.Presenter
     private val navigationArgs: RepoListFragmentArgs by navArgs()
-
     private var cachedRepos:List<RepoDetail>? = null
 
     override fun setPresenter(presenter: MainContract.Presenter) {
         this.presenter = presenter
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +50,6 @@ class RepoListFragment : Fragment(), MainContract.View {
 
     override fun onResume() {
         super.onResume()
-        //if user presses back, display existing list of repos
         cachedRepos?.let{
             displayCachedRepos()}
     }
@@ -87,6 +83,9 @@ class RepoListFragment : Fragment(), MainContract.View {
         presenter.onUserSearch(query.lowercase())
     }
 
+    /**
+     * Handles user click on a specific repository. Creates a bundle with the repository parcelable object.
+     */
     private fun onRepoClicked(repo :RepoDetail) {
         setFragmentResult("requestKey", bundleOf("repoDetails" to repo))
         val action = RepoListFragmentDirections.actionRepoListFragmentToRepoDetailFragment(repo.nameWithOwner!!)

@@ -1,25 +1,20 @@
 package com.example.project_matcher
 
-import android.app.SearchManager
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import androidx.core.app.NavUtils
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.project_matcher.databinding.ActivityMainBinding
+import com.example.project_matcher.view.FirebaseAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : FirebaseAuthProvider() {
     lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +23,11 @@ class MainActivity : FirebaseAuthProvider() {
         setContentView(binding.root)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-
         navController = navHostFragment.navController
         NavigationUI.setupActionBarWithNavController(this, navController)
-
         if(auth.currentUser == null){
             redirect(this, AuthActivity::class.java)
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -44,6 +36,9 @@ class MainActivity : FirebaseAuthProvider() {
         return true
     }
 
+    /**
+     * Handle overflow menu selection
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.option_logout -> {
@@ -51,7 +46,6 @@ class MainActivity : FirebaseAuthProvider() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
-
         }
     }
 

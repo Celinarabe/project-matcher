@@ -14,13 +14,11 @@ class TopicListAdapter(private val context: Context,
 ) : RecyclerView.Adapter<TopicListAdapter.TopicViewHolder>() {
 
     class TopicViewHolder(private val view: View):RecyclerView.ViewHolder(view) {
-
         val title: TextView = view.findViewById(R.id.tvTopicTitle)
         val description: TextView = view.findViewById(R.id.tvTopicDescription)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopicViewHolder {
-        // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.topic_item, parent, false)
         return TopicViewHolder(adapterLayout)

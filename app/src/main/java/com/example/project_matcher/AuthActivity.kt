@@ -1,15 +1,11 @@
 package com.example.project_matcher
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
+import com.example.project_matcher.view.FirebaseAuthProvider
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.OAuthCredential
-
 
 class AuthActivity : FirebaseAuthProvider() {
     private var token :String? = null
@@ -20,6 +16,9 @@ class AuthActivity : FirebaseAuthProvider() {
         findViewById<Button>(R.id.btnLogin).setOnClickListener { logIn() }
     }
 
+    /**
+     * Handles user click on login button
+     */
     private fun logIn() {
         auth
             .startActivityForSignInWithProvider(this, provider.build())
@@ -38,6 +37,9 @@ class AuthActivity : FirebaseAuthProvider() {
             }
     }
 
+    /**
+     * Saves the returned user token from Firebase Auth
+     */
     fun saveToken(token: String?) {
         val sharedPref = getSharedPreferences(
             "shared_prefs", Context.MODE_PRIVATE)

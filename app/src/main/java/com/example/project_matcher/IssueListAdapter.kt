@@ -1,6 +1,5 @@
 package com.example.project_matcher
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,20 +7,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project_matcher.model.Issue
 
-class IssueListAdapter(private val context: Context, private val dataset :  List<Issue?>?) : RecyclerView.Adapter<IssueListAdapter.IssueViewHolder>() {
+class IssueListAdapter(private val dataset: List<Issue?>?) : RecyclerView.Adapter<IssueListAdapter.IssueViewHolder>() {
 
     class IssueViewHolder(private val view: View):RecyclerView.ViewHolder(view) {
-
         val title: TextView = view.findViewById(R.id.tvIssueTitle)
         val number: TextView = view.findViewById(R.id.tvIssueNumber)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IssueViewHolder {
-        // create a new view
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.issue_item, parent, false)
         return IssueViewHolder(adapterLayout)
-
     }
 
     override fun onBindViewHolder(holder: IssueViewHolder, position: Int) {
