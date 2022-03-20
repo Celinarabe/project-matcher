@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<!--This file declares the various options for search-->
-<searchable xmlns:android="http://schemas.android.com/apk/res/android"
-    android:label="@string/app_name"
-    android:hint= "@string/topic_search"
-   />
-
-<!--This label isn't actually visible to the user until you enable search suggestions for Quick Search Box. At that point, this label is visible in the list of Searchable items in the system Settings.-->
