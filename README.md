@@ -57,7 +57,7 @@ Project Matcher utilizes the MVP Architecture pattern.
 I decided to implement the BaseView interface in the RepoList Fragment, rather than in the MainActivity. This allowed me to more easily share data between fragments within the app. The RepoList Fragment is able to share a Repository parcelable object via a Bundle. This also removed the need for a database.
 
 ### FirebaseAuthProvider
-I decided to create a parent activity which both activities inherit from. This activity is responsible for initializing the Firebase auth provider, defining the requested scopes, and creating intents to start the appropriate activity based on login status. Both activities needed access to this functionality which led to the decision to create FirebaseAuthProvider.
+I decided to create a parent activity (FirebaseAuthProvider) which both activities inherit from. This activity is responsible for initializing the Firebase auth provider, defining the requested scopes, and creating intents to start the appropriate activity based on login status. Both activities needed access to this functionality which led to the decision to create FirebaseAuthProvider.
 
 
 ## Screenshots
