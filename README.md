@@ -11,35 +11,38 @@ The app contains categories of interest and fetches live Github data of popular 
 that would like help!
 
 
-
 ## Features
 
 - 10 Topics of Interest
 - Live Github Data from Github's GraphQL API
-- GitHub OAuth Authorization Flow
+- GitHub OAuth Authorization Flow via Firebase Auth
+- Animated Transitions
+- Android Jetpack Navigation
 
  ## Architectural Requirements
- - 2 Activities: THe MainActivity is responsible for the main flow of the application. The AuthActivity is responsible for the Github Authentication flow before the user is able to use the app.
- - 1 Fragment: RepoListFragment displays the results from the GitHub API
- - MVP architectural pattern is used to fetch data repository data and display the results to the user.
- - The GitHub GraphQL API is used to fetch the repository data
+ - 2 Activities:
+   - The MainActivity is responsible for the main flow of the application. It houses the Navigation Controller which allows users to navigate across different topics and repositories within the app.
+   - The AuthActivity is responsible for the Github Authentication flow before the user is able to use the app.
+ - 1 Fragment: 
+   - The RepoListFragment displays the results from the GitHub API
+ - Project Matcher utilizes the MVP architectural pattern to fetch GitHub data and display the results to the user.
+ - The GitHub GraphQL API is used to fetch the repository data.
  - 5 Material Design UI Components
-    1. Top app bar is visible throughout the main flow of the application
-    2. A button is used in the AuthActivity to navigate the user through the authorization flow
-    3. Cards are used to display the lists of topics and repositories
-    4. An overflow menu is used to display the log out functionality
-    5. A progress indicator is used to provide user feedback while the app is fetching data from the GitHub endpoint
+    1. The top app bar is visible throughout the main flow of the application
+    2. A button is used in the AuthActivity to allow the user to initiate through the authorization flow.
+    3. Cards are used to display the lists of topics and repositories.
+    4. An overflow menu is used to display the log out functionality.
+    5. A progress indicator is used to provide user feedback while the app is fetching data from the GitHub endpoint.
 - SharedPreferences are used to store the user's GitHub Auth token with private context mode.
 
 ## MVP Architecture
 
 Project Matcher utilizes the MVP Architecture pattern.
-- The model draws from two external sources: The Github API and the Apollo generated models. The model also contains custom classes which convert the Apollo GraphQL classes into parcelables, which our fragments can then use to pass data between one another.
-- The presenter fetches the repository data from the repository. Then, it converts that data 
+- The model draws from two external sources: The Github API and the Apollo generated models. The model also contains custom classes which convert the Apollo GraphQL classes into parcelables, which our fragments can then use to pass data between each other.
+- The presenter fetches the repository data from the repository. 
 - The view defines how the repository data should look on the user's screen.
 - The MainContract class is an interface that defines the relationship between the model and presenter.
-- The base classes (BaseView and BasePresenter) are also interfaces which define each component's expected behavior. Interfaces help clearly define and decouple different parts of the app.
-
+- The base classes (BaseView and BasePresenter) are also interfaces which define each component's expected behavior. These interfaces help clearly define and decouple different parts of the app.
 
 
  <p>
@@ -48,12 +51,13 @@ Project Matcher utilizes the MVP Architecture pattern.
  
 
 
+## Additional Design Decisions
 
+### Fragment MainView Implementation
+I decided to implement the BaseView interface in the RepoList Fragment, rather than in the MainActivity. This allowed me to more easily share data between fragments within the app. Because the RepoList fragment is receiving the data, it is able to share this data to the RepoDetails fragment via a Bundle. This removed the need for a database.
 
-## Design Decisions
-
-I decided to implement the BaseView interface in the RepoList Fragment, rather than in the MainActivity. This allowed me to more easily send data between fragments within the MainActivity. Because the RepoList fragment was receiving the data, it could also pass it to the RepoDetails fragment via a Bundle. This also removed the need for a database.
-
+### FirebaseAuthProvider
+I decided to create a parent activity which both activities inherit from. This activity is responsible for initializing the Firebase auth provider, defining the requested scopes, and creating intents to start the appropriate activity based on login status. Both activities needed access to this functionality which led to the decision to create FirebaseAuthProvider.
 
 
 ## Screenshots
