@@ -1,7 +1,7 @@
 
-<!-- <p align="center">
+<p align="center">
 <img src="https://user-images.githubusercontent.com/41392379/159155933-73a896e8-757d-4a32-95ff-600626b18b57.png" width=80%>
- </p> -->
+ </p>
 
 
 ## Project Matcher
