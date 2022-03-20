@@ -24,7 +24,6 @@ class RepoRepository (private val context: Context) {
 
     suspend fun getRepos(query: String): List<RepoDetail>? {
         try {
-
             val response = apolloClient(context).query(
                 RepoListQuery(
                     order_input = RepositoryOrder(
@@ -41,9 +40,7 @@ class RepoRepository (private val context: Context) {
                 return convertRepos(labelExists.filter { it!!.node?.label?.issues?.edges?.size!! >= 3 }.map{it!!})
             }
             return null
-        } catch (exception: ApolloException) {
-            val response = null
-            Log.d("Lunch", "YO WQE CAUGHT THE ERRORRRR")
+        } catch (exception: Exception) {
             return null
         }
     }
@@ -56,9 +53,7 @@ class RepoRepository (private val context: Context) {
         }
         return parcelableRepos
     }
-
-
-    }
+}
 
 
 

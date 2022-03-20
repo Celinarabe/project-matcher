@@ -34,5 +34,6 @@
     <string name="option_logout">Log Out</string>
     <string name="repo_list_progress_description">Loading list of repositories</string>
     <string name="fragment_list_label">Select a Topic</string>
+    <string name="api_error">Unable to fetch data</string>
 
 </resources>

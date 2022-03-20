@@ -18,7 +18,7 @@ fun apolloClient(context: Context): ApolloClient {
         .build()
 
     instance = ApolloClient.Builder()
-        .serverUrl("https://api.github.com/graphql")
+        .serverUrl("https://api.github.com/grkaphql")
         .okHttpClient(okHttpClient)
         .build()
 

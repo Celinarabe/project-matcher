@@ -16,5 +16,6 @@ interface MainContract {
 
     interface View : BaseView<Presenter> {
         fun displayRepos(repoList: List<RepoDetail>?)
+        fun handleBadResponse()
     }
 }

@@ -13,6 +13,7 @@ import com.example.project_matcher.databinding.FragmentRepoListBinding
 import com.example.project_matcher.model.Issue
 import com.example.project_matcher.model.RepoDetail
 import com.example.rocketreserver.RepoListQuery
+import com.google.android.material.snackbar.Snackbar
 
 
 class RepoListFragment : Fragment(), MainContract.View {
@@ -71,9 +72,18 @@ class RepoListFragment : Fragment(), MainContract.View {
 
     override fun displayRepos(repoList: List<RepoDetail>?) {
         cachedRepos = repoList
+        Log.d("Lunch", "about to hide loading indicator")
         binding?.liRepoList?.hide()
         val recyclerView = binding?.rvRepoList
         recyclerView?.adapter = RepoListAdapter(requireContext(), repoList) { onRepoClicked(it) }
+    }
+
+    override fun handleBadResponse() {
+        binding?.rvRepoList?.let {
+            Snackbar.make(it, R.string.api_error, Snackbar.LENGTH_SHORT)
+                .show()
+        }
+        this.findNavController().navigate(R.id.action_repoListFragment_to_topicListFragment)
     }
 
     private fun handleSearch(query: String) {

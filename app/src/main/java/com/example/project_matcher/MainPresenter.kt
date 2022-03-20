@@ -18,14 +18,10 @@ class MainPresenter(private var view: MainContract.View?, private val context: C
     }
 
     override fun onUserSearch(query: String) {
-
         launch {
-//            //deferred is an interface that extends Job and will wait for the result from the coroutine
-//            //async allows us to obtain a value returned by the coroutine block
-//            val deferred: Deferred<RepoListQuery.Repositories?> = async {
-//                return@async repository.getRepos(query)
-//            }
-//            val repoList : RepoListQuery.Repositories? = deferred.await()
+            if (repository.getRepos(query) == null)
+                view?.handleBadResponse()
+            else
             view?.displayRepos(repository.getRepos(query))
         }
     }
