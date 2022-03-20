@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="subheaderMargin">8dp</dimen>
+    <dimen name="loginButtonMargin">32dp</dimen>
+    <dimen name="headingMargin">16dp</dimen>
+    <dimen name="headingPadding">16dp</dimen>
+    <dimen name="rvMargin">1dp</dimen>
+    <dimen name="subheaderPadding">8dp</dimen>
 </resources>

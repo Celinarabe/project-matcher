@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingVertical="8dp">
+    android:paddingVertical="@dimen/subheaderPadding">
 
     <TextView
         android:id="@+id/tvIssueNumber"
@@ -18,6 +18,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceBody2"
         android:textColor="?android:attr/textColorTertiary"
-        android:paddingHorizontal="8dp"
+        android:paddingHorizontal="@dimen/subheaderPadding"
         />
 </LinearLayout>
