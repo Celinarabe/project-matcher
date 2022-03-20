@@ -68,7 +68,7 @@ Project Matcher utilizes the MVP Architecture pattern.
 
 
  <p>
-<img src="https://user-images.githubusercontent.com/41392379/159156765-5e903cec-4743-4884-ae09-17b8a7396dee.png" height="400">
+<img src="https://user-images.githubusercontent.com/41392379/159156765-5e903cec-4743-4884-ae09-17b8a7396dee.png" wisth="100%">
  </p>
 
 
