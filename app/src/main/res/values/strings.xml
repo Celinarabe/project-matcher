@@ -35,5 +35,6 @@
     <string name="repo_list_progress_description">Loading list of repositories</string>
     <string name="fragment_list_label">Select a Topic</string>
     <string name="api_error">Unable to fetch data</string>
+    <string name="login_error">There was an issue logging in</string>
 
 </resources>

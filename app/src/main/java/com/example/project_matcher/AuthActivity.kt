@@ -6,17 +6,20 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.common.internal.Constants
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.OAuthCredential
 import com.google.firebase.auth.OAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.lang.Exception
 
 
 class AuthActivity : FirebaseAuthProvider() {
@@ -27,24 +30,23 @@ class AuthActivity : FirebaseAuthProvider() {
         findViewById<Button>(R.id.btnLogin).setOnClickListener { logIn() }
     }
 
-    public override fun onStart() {
-        super.onStart()
-    }
 
     private fun logIn() {
         auth
             .startActivityForSignInWithProvider(this, provider.build())
             .addOnSuccessListener {
+                redirect(this, MainActivity::class.java)
                 val credential = it.credential as OAuthCredential;
                 val token = credential.accessToken
                 saveToken(token)
-                redirect(this, MainActivity::class.java)
+
             }
-            .addOnFailureListener(
-                OnFailureListener {
-                    // Handle failure with toast "There was an error with log in"
+            .addOnFailureListener {
+                findViewById<Button>(R.id.btnLogin).let {
+                    Snackbar.make(it, R.string.login_error, Snackbar.LENGTH_SHORT)
+                        .show()
                 }
-            )
+            }
     }
 
     fun saveToken(token: String?) {

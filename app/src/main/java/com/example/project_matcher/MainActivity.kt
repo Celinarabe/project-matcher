@@ -62,6 +62,9 @@ class MainActivity : FirebaseAuthProvider() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
+    /**
+     * Handle user logging out
+     */
     fun handleLogout() {
         Firebase.auth.signOut()
         redirect(this, AuthActivity::class.java)

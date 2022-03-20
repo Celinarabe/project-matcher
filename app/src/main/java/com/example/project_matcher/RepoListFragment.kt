@@ -72,7 +72,6 @@ class RepoListFragment : Fragment(), MainContract.View {
 
     override fun displayRepos(repoList: List<RepoDetail>?) {
         cachedRepos = repoList
-        Log.d("Lunch", "about to hide loading indicator")
         binding?.liRepoList?.hide()
         val recyclerView = binding?.rvRepoList
         recyclerView?.adapter = RepoListAdapter(requireContext(), repoList) { onRepoClicked(it) }
