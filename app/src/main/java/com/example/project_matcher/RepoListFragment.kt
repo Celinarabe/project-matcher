@@ -17,7 +17,6 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class RepoListFragment : Fragment(), MainContract.View {
-//    View Binding
     private var _binding: FragmentRepoListBinding? = null
     private val binding get() = _binding
 
@@ -68,7 +67,6 @@ class RepoListFragment : Fragment(), MainContract.View {
     private fun displayCachedRepos() {
         displayRepos(cachedRepos)
     }
-
 
     override fun displayRepos(repoList: List<RepoDetail>?) {
         cachedRepos = repoList

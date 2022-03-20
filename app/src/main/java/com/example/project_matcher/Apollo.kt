@@ -1,5 +1,6 @@
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.network.okHttpClient
 import okhttp3.Interceptor
@@ -26,10 +27,10 @@ fun apolloClient(context: Context): ApolloClient {
 }
 
 private class AuthorizationInterceptor(val context: Context): Interceptor {
-    val sharedPref: SharedPreferences = context.getSharedPreferences(
-    "shared_prefs", Context.MODE_PRIVATE)
-    val token = sharedPref.getString("user_token", null)
     override fun intercept(chain: Interceptor.Chain): Response {
+        val sharedPref: SharedPreferences = context.getSharedPreferences(
+            "shared_prefs", Context.MODE_PRIVATE)
+        val token = sharedPref.getString("user_token", null)
         val request = chain.request().newBuilder()
             .addHeader("Authorization", "Bearer $token" ?: "")
             .build()

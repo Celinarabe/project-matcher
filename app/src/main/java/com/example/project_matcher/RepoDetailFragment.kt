@@ -40,19 +40,23 @@ class RepoDetailFragment : Fragment() {
     }
 
     private fun displayRepoDetails(repoDetail: RepoDetail) {
-        repoDetail.issueList?.elementAt(0)?.title?.let { Log.d("Lunch", it) }
         binding.tvDescription.text = repoDetail.description
         binding.tvTitle.text = repoDetail.nameWithOwner
         Glide.with(requireContext()).load(repoDetail.openGraphImageUrl).into(binding.imgRepo)
-        val issueNum1 = "#${repoDetail.issueList?.elementAt(0)?.number}"
-        val issueNum2 = "#${repoDetail.issueList?.elementAt(1)?.number}"
-        val issueNum3 = "#${repoDetail.issueList?.elementAt(2)?.number}"
-        binding.tvIssueNumber1.text = issueNum1
-        binding.tvIssueNumber2.text = issueNum2
-        binding.tvIssueNumber3.text = issueNum3
-        binding.tvIssueTitle1.text = repoDetail.issueList?.elementAt(0)?.title
-        binding.tvIssueTitle2.text = repoDetail.issueList?.elementAt(1)?.title
-        binding.tvIssueTitle3.text = repoDetail.issueList?.elementAt(2)?.title
+
+//        repoDetail.issueList?.forEachIndexed { index, issueObj ->
+//            val numBind = "binding.tvIssueNumber1${index}"
+//            numBind.toView
+//        }
+//        val issueNum1 = "#${repoDetail.issueList?.elementAt(0)?.number}"
+//        val issueNum2 = "#${repoDetail.issueList?.elementAt(1)?.number}"
+//        val issueNum3 = "#${repoDetail.issueList?.elementAt(2)?.number}"
+//        binding.tvIssueNumber1.text = issueNum1
+//        binding.tvIssueNumber2.text = issueNum2
+//        binding.tvIssueNumber3.text = issueNum3
+//        binding.tvIssueTitle1.text = repoDetail.issueList?.elementAt(0)?.title
+//        binding.tvIssueTitle2.text = repoDetail.issueList?.elementAt(1)?.title
+//        binding.tvIssueTitle3.text = repoDetail.issueList?.elementAt(2)?.title
 
     }
 }
