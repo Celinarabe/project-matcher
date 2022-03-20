@@ -41,6 +41,7 @@ class RepoRepository (private val context: Context) {
             }
             return null
         } catch (exception: Exception) {
+            Log.d("Lunch", exception.toString())
             return null
         }
     }

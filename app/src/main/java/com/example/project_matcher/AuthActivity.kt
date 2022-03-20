@@ -1,5 +1,6 @@
 package com.example.project_matcher
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -9,6 +10,7 @@ import com.google.firebase.auth.OAuthCredential
 
 
 class AuthActivity : FirebaseAuthProvider() {
+    private var token :String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,30 +22,24 @@ class AuthActivity : FirebaseAuthProvider() {
         auth
             .startActivityForSignInWithProvider(this, provider.build())
             .addOnSuccessListener {
-                redirect(this, MainActivity::class.java)
                 val credential = it.credential as OAuthCredential;
-                val token = credential.accessToken
+                token = credential.accessToken
                 saveToken(token)
+                redirect(this, MainActivity::class.java)
             }
             .addOnFailureListener {
                 findViewById<Button>(R.id.btnLogin).let {
                     Snackbar.make(it, R.string.login_error, Snackbar.LENGTH_SHORT)
                         .show()
                 }
+                token = null
             }
     }
 
-    // Save user token using Encrypted Shared Preferences
     fun saveToken(token: String?) {
-        val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-        val sharedPreferences = EncryptedSharedPreferences.create(
-            "user_token",
-            masterKeyAlias,
-            this,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
-        val editor = sharedPreferences.edit()
+        val sharedPref = getSharedPreferences(
+            "shared_prefs", Context.MODE_PRIVATE)
+        val editor = sharedPref.edit()
         editor.apply {
             putString("user_token", token)
         }.apply()
