@@ -1,4 +1,4 @@
-package com.example.project_matcher
+package com.example.project_matcher.activities
 
 import android.os.Bundle
 import android.view.Menu
@@ -7,8 +7,8 @@ import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.project_matcher.R
 import com.example.project_matcher.databinding.ActivityMainBinding
-import com.example.project_matcher.view.FirebaseAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -26,7 +26,7 @@ class MainActivity : FirebaseAuthProvider() {
         navController = navHostFragment.navController
         NavigationUI.setupActionBarWithNavController(this, navController)
         if(auth.currentUser == null){
-            redirect(this, AuthActivity::class.java)
+            redirect(this, AuthenticateActivity::class.java)
         }
     }
 
@@ -61,7 +61,7 @@ class MainActivity : FirebaseAuthProvider() {
      */
     fun handleLogout() {
         Firebase.auth.signOut()
-        redirect(this, AuthActivity::class.java)
+        redirect(this, AuthenticateActivity::class.java)
     }
 
 }

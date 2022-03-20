@@ -1,7 +1,6 @@
-package com.example.project_matcher.base
+package com.example.project_matcher.interfaces
 
-import com.example.project_matcher.model.RepoDetail
-import com.example.rocketreserver.RepoListQuery
+import com.example.project_matcher.models.RepoDetail
 
 interface MainContract {
     interface Presenter : BasePresenter {

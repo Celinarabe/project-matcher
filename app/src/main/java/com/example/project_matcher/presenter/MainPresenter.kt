@@ -1,8 +1,8 @@
 package com.example.project_matcher.presenter
 
 import android.content.Context
-import com.example.project_matcher.data.RepoRepository
-import com.example.project_matcher.base.MainContract
+import com.example.project_matcher.models.RepoRepository
+import com.example.project_matcher.interfaces.MainContract
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

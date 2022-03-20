@@ -1,11 +1,12 @@
-package com.example.project_matcher
+package com.example.project_matcher.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.project_matcher.model.Issue
+import com.example.project_matcher.R
+import com.example.project_matcher.models.Issue
 
 class IssueListAdapter(private val dataset: List<Issue?>?) : RecyclerView.Adapter<IssueListAdapter.IssueViewHolder>() {
 

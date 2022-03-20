@@ -1,7 +1,6 @@
-package com.example.project_matcher.data
+package com.example.project_matcher.models
 
 import com.example.project_matcher.R
-import com.example.project_matcher.model.Topic
 
 class Topics {
     fun loadTopics(): List<Topic> {

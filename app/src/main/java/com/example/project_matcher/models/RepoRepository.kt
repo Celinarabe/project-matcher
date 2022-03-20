@@ -1,9 +1,7 @@
-package com.example.project_matcher.data
+package com.example.project_matcher.models
 
 import android.content.Context
-import apolloClient
-import com.example.project_matcher.model.Issue
-import com.example.project_matcher.model.RepoDetail
+import com.example.project_matcher.network.apolloClient
 import com.example.rocketreserver.RepoListQuery
 import com.example.rocketreserver.type.OrderDirection
 import com.example.rocketreserver.type.RepositoryOrder

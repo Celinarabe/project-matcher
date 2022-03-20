@@ -1,4 +1,4 @@
-package com.example.project_matcher
+package com.example.project_matcher.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,9 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.project_matcher.model.RepoDetail
+import com.example.project_matcher.R
+import com.example.project_matcher.models.RepoDetail
 
-class RepoListAdapter(private val context: Context, private val dataset: List<RepoDetail>?, private val onRepoClicked: (repo :RepoDetail) -> Unit
+class RepoListAdapter(private val context: Context, private val dataset: List<RepoDetail>?, private val onRepoClicked: (repo : RepoDetail) -> Unit
 ) : RecyclerView.Adapter<RepoListAdapter.RepoViewHolder>() {
 
     class RepoViewHolder(private val view: View):RecyclerView.ViewHolder(view) {

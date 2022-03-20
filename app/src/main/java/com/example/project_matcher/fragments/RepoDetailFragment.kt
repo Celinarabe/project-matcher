@@ -1,4 +1,4 @@
-package com.example.project_matcher.view
+package com.example.project_matcher.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
 import com.bumptech.glide.Glide
-import com.example.project_matcher.IssueListAdapter
+import com.example.project_matcher.adapters.IssueListAdapter
 import com.example.project_matcher.databinding.FragmentRepoDetailBinding
-import com.example.project_matcher.model.RepoDetail
+import com.example.project_matcher.models.RepoDetail
 
 
 class RepoDetailFragment : Fragment() {

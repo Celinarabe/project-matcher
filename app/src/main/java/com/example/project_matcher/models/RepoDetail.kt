@@ -1,4 +1,4 @@
-package com.example.project_matcher.model
+package com.example.project_matcher.models
 
 import android.os.Build
 import android.os.Parcel

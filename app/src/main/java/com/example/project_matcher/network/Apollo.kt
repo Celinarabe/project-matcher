@@ -1,3 +1,5 @@
+package com.example.project_matcher.network
+
 import android.content.Context
 import android.content.SharedPreferences
 import com.apollographql.apollo3.ApolloClient

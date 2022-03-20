@@ -1,13 +1,13 @@
-package com.example.project_matcher.view
+package com.example.project_matcher.fragments
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.project_matcher.TopicListAdapter
-import com.example.project_matcher.data.Topics
+import com.example.project_matcher.adapters.TopicListAdapter
+import com.example.project_matcher.models.Topics
 import com.example.project_matcher.databinding.FragmentTopicListBinding
-import com.example.project_matcher.model.Topic
+import com.example.project_matcher.models.Topic
 
 
 class TopicListFragment : Fragment() {

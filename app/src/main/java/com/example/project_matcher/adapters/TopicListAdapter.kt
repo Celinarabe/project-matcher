@@ -1,4 +1,4 @@
-package com.example.project_matcher
+package com.example.project_matcher.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.project_matcher.model.Topic
+import com.example.project_matcher.R
+import com.example.project_matcher.models.Topic
 
 class TopicListAdapter(private val context: Context,
                        private val dataset : List<Topic>,
-                       private val onTopicClicked: (topic:Topic) -> Unit
+                       private val onTopicClicked: (topic: Topic) -> Unit
 ) : RecyclerView.Adapter<TopicListAdapter.TopicViewHolder>() {
 
     class TopicViewHolder(private val view: View):RecyclerView.ViewHolder(view) {

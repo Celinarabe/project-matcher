@@ -1,4 +1,4 @@
-package com.example.project_matcher.view
+package com.example.project_matcher.fragments
 
 import android.os.Bundle
 import android.view.*
@@ -8,10 +8,10 @@ import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.project_matcher.R
-import com.example.project_matcher.RepoListAdapter
-import com.example.project_matcher.base.MainContract
+import com.example.project_matcher.adapters.RepoListAdapter
+import com.example.project_matcher.interfaces.MainContract
 import com.example.project_matcher.databinding.FragmentRepoListBinding
-import com.example.project_matcher.model.RepoDetail
+import com.example.project_matcher.models.RepoDetail
 import com.example.project_matcher.presenter.MainPresenter
 import com.google.android.material.snackbar.Snackbar
 
@@ -86,7 +86,7 @@ class RepoListFragment : Fragment(), MainContract.View {
     /**
      * Handles user click on a specific repository. Creates a bundle with the repository parcelable object.
      */
-    private fun onRepoClicked(repo :RepoDetail) {
+    private fun onRepoClicked(repo : RepoDetail) {
         setFragmentResult("requestKey", bundleOf("repoDetails" to repo))
         val action = RepoListFragmentDirections.actionRepoListFragmentToRepoDetailFragment(repo.nameWithOwner!!)
         this.findNavController().navigate(action)

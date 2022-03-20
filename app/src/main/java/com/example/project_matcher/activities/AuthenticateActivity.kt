@@ -1,13 +1,13 @@
-package com.example.project_matcher
+package com.example.project_matcher.activities
 
 import android.content.Context
 import android.os.Bundle
 import android.widget.Button
-import com.example.project_matcher.view.FirebaseAuthProvider
+import com.example.project_matcher.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.OAuthCredential
 
-class AuthActivity : FirebaseAuthProvider() {
+class AuthenticateActivity : FirebaseAuthProvider() {
     private var token :String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
