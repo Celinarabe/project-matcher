@@ -41,7 +41,7 @@ Project Matcher utilizes the MVP Architecture pattern.
 - The model draws from two external sources: The Github API and the Apollo generated models. The model also contains custom classes which convert the Apollo GraphQL classes into parcelables, which our fragments can then use to pass data between each other.
 - The presenter fetches the repository data from the repository. 
 - The view defines how the repository data should look on the user's screen.
-- The MainContract class is an interface that defines the relationship between the model and presenter.
+- The MainContract class is an interface which defines the relationship between the model and presenter.
 - The base classes (BaseView and BasePresenter) are also interfaces which define each component's expected behavior. These interfaces help clearly define and decouple different parts of the app.
 
 
