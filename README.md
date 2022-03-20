@@ -18,6 +18,42 @@ that would like help!
 - Live Github Data from Github's GraphQL API
 - GitHub OAuth Authorization Flow
 
+ ## Architectural Requirements
+ - 2 Activities: THe MainActivity is responsible for the main flow of the application. The AuthActivity is responsible for the Github Authentication flow before the user is able to use the app.
+ - 1 Fragment: RepoListFragment displays the results from the GitHub API
+ - MVP architectural pattern is used to fetch data repository data and display the results to the user.
+ - The GitHub GraphQL API is used to fetch the repository data
+ - 5 Material Design UI Components
+    1. Top app bar is visible throughout the main flow of the application
+    2. A button is used in the AuthActivity to navigate the user through the authorization flow
+    3. Cards are used to display the lists of topics and repositories
+    4. An overflow menu is used to display the log out functionality
+    5. A progress indicator is used to provide user feedback while the app is fetching data from the GitHub endpoint
+- SharedPreferences are used to store the user's GitHub Auth token with private context mode.
+
+## MVP Architecture
+
+Project Matcher utilizes the MVP Architecture pattern.
+- The model draws from two external sources: The Github API and the Apollo generated models. The model also contains custom classes which convert the Apollo GraphQL classes into parcelables, which our fragments can then use to pass data between one another.
+- The presenter fetches the repository data from the repository. Then, it converts that data 
+- The view defines how the repository data should look on the user's screen.
+- The MainContract class is an interface that defines the relationship between the model and presenter.
+- The base classes (BaseView and BasePresenter) are also interfaces which define each component's expected behavior. Interfaces help clearly define and decouple different parts of the app.
+
+
+
+ <p>
+<img src="https://user-images.githubusercontent.com/41392379/159156765-5e903cec-4743-4884-ae09-17b8a7396dee.png" wisth="100%">
+ </p>
+ 
+
+
+
+
+## Design Decisions
+
+I decided to implement the BaseView interface in the RepoList Fragment, rather than in the MainActivity. This allowed me to more easily send data between fragments within the MainActivity. Because the RepoList fragment was receiving the data, it could also pass it to the RepoDetails fragment via a Bundle. This also removed the need for a database.
+
 
 
 ## Screenshots
@@ -56,23 +92,4 @@ Once the user clicks on a Repository, they are taken to a Repository Details pag
 
 
 
-## MVP Architecture
-
-Project Matcher utilizes the MVP Architecture pattern.
-- The model draws from two external sources: The Github API and the Apollo generated models. The model also contains custom classes which convert the Apollo GraphQL classes into parcelables, which our fragments can then use to pass data between one another.
-- The presenter fetches the repository data from the repository. Then, it converts that data 
-- The view defines how the repository data should look on the user's screen.
-- The MainContract class is an interface that defines the relationship between the model and presenter.
-- The base classes (BaseView and BasePresenter) are also interfaces which define each component's expected behavior. Interfaces help clearly define and decouple different parts of the app.
-
-
-
- <p>
-<img src="https://user-images.githubusercontent.com/41392379/159156765-5e903cec-4743-4884-ae09-17b8a7396dee.png" wisth="100%">
- </p>
-
-
-## Design Decisions
-
-I decided to implement the BaseView interface in the RepoList Fragment, rather than in the MainActivity. This allowed me to more easily send data between fragments within the MainActivity. Because the RepoList fragment was receiving the data, it could also pass it to the RepoDetails fragment via a Bundle. This also removed the need for a database.
 
