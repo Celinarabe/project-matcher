@@ -15,7 +15,8 @@
         <item name="android:actionBarStyle">@style/MyActionBar</item>
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
-        <item name="android:fontFamily">@font/poppins_fonts_family</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorTertiary">@color/black</item>
     </style>
 
     <!-- ActionBar styles -->
