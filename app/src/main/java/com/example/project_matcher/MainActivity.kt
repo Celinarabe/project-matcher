@@ -18,26 +18,19 @@ import com.google.firebase.ktx.Firebase
 
 class MainActivity : FirebaseAuthProvider() {
     lateinit var binding: ActivityMainBinding
-    lateinit var optionsMenu : Menu
     private lateinit var navController: NavController
 
-//    private lateinit var presenter: MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getActionBar()?.setDisplayHomeAsUpEnabled(true);
+        actionBar?.setDisplayHomeAsUpEnabled(true);
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
         navController = navHostFragment.navController
-        // Set up the action bar for use with the NavController
         NavigationUI.setupActionBarWithNavController(this, navController)
-
-//        handleIntent(intent)
-
-        Log.d("LaunchList", "YOYOYOYOYOY")
 
         if(auth.currentUser == null){
             redirect(this, AuthActivity::class.java)
@@ -57,7 +50,6 @@ class MainActivity : FirebaseAuthProvider() {
                 handleLogout()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
 
         }
@@ -70,22 +62,6 @@ class MainActivity : FirebaseAuthProvider() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-
-//    override fun onStart() {
-//        super.onStart()
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        binding = null
-//    }
-    private fun setQuery(query: String) {
-    val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
-    with(sharedPref.edit()) {
-        putString(getString(R.string.user_query_key), query)
-        apply()
-    }
-}
     fun handleLogout() {
         Firebase.auth.signOut()
         redirect(this, AuthActivity::class.java)

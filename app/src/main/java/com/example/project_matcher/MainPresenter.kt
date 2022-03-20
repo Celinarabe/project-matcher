@@ -1,12 +1,8 @@
 package com.example.project_matcher
 
 import android.content.Context
-import android.util.Log
-import com.example.project_matcher.base.BasePresenter
 import com.example.project_matcher.base.MainContract
-import com.example.rocketreserver.RepoListQuery
 import kotlinx.coroutines.*
-import kotlin.concurrent.thread
 import kotlin.coroutines.CoroutineContext
 
 class MainPresenter(private var view: MainContract.View?, private val context: Context ): MainContract.Presenter, CoroutineScope

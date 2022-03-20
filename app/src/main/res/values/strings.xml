@@ -5,6 +5,7 @@
     <string name="content_description_repo">Image for Repository</string>
     <string name="user_query_key">user_query_key</string>
     <string name="repo_list_fragment_label">{topic_title} Repositories</string>
+    <string name="repo_detail_fragment_label">{repo_title}</string>
 
     <string name="topic1">Android</string>
     <string name="topic2">COVID-19</string>

@@ -59,7 +59,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
-                android:text="#0-01"
                 />
 
             <TextView
@@ -68,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="?android:attr/textColorSecondary"
-                android:text="need heop here"
+                android:paddingHorizontal="8dp"
                 />
 
 
@@ -85,7 +84,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:text="#0-01"
                     />
 
                 <TextView
@@ -94,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:text="need heop here"
+                    android:paddingHorizontal="8dp"
                     />
 
 
@@ -111,7 +109,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:text="#0-01"
                     />
 
                 <TextView
@@ -120,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary"
-                    android:text="need heop here"
+                    android:paddingHorizontal="8dp"
                     />
 
 

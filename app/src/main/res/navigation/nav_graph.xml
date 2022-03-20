@@ -24,11 +24,13 @@
     <fragment
         android:id="@+id/repoDetailFragment"
         android:name="com.example.project_matcher.RepoDetailFragment"
-        android:label="fragment_repo_detail"
-        tools:layout="@layout/fragment_repo_detail" >
+        android:label="@string/repo_detail_fragment_label"
+        tools:layout="@layout/fragment_repo_detail">
         <action
             android:id="@+id/action_repoDetailFragment_to_repoListFragment"
             app:destination="@id/repoListFragment" />
+        <argument android:name="repo_title"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/topicListFragment"

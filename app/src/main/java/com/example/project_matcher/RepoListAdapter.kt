@@ -9,9 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.project_matcher.model.RepoDetail
 import com.example.rocketreserver.RepoListQuery
 
-class RepoListAdapter(private val context: Context, private val dataset : List<RepoListQuery.Edge?>?
+class RepoListAdapter(private val context: Context, private val dataset: List<RepoDetail>?, private val onRepoClicked: (repo :RepoDetail) -> Unit
 ) : RecyclerView.Adapter<RepoListAdapter.RepoViewHolder>() {
 
     class RepoViewHolder(private val view: View):RecyclerView.ViewHolder(view) {
@@ -31,11 +32,14 @@ class RepoListAdapter(private val context: Context, private val dataset : List<R
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
         val item = dataset?.get(position)
-        holder.title.text = item?.node?.nameWithOwner
-        holder.description.text = item?.node?.description
-        val imageUrl = item?.node?.openGraphImageUrl
+        holder.title.text = item?.nameWithOwner
+        holder.description.text = item?.description
+        val imageUrl = item?.openGraphImageUrl
         imageUrl?.let {
             Glide.with(context).load(imageUrl).into(holder.image)
+        }
+        holder.itemView.setOnClickListener {
+            item?.let { it1 -> onRepoClicked(it1) }
         }
     }
 

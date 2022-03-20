@@ -1,5 +1,6 @@
 package com.example.project_matcher.base
 
+import com.example.project_matcher.model.RepoDetail
 import com.example.rocketreserver.RepoListQuery
 
 interface MainContract {
@@ -14,6 +15,6 @@ interface MainContract {
     }
 
     interface View : BaseView<Presenter> {
-        fun displayRepos(repoList: List<RepoListQuery.Edge?>?)
+        fun displayRepos(repoList: List<RepoDetail>?)
     }
 }

@@ -13,6 +13,7 @@ query RepoList($name_input:String!, $label_input:String!,$order_input:Repository
                                 node {
                                     id
                                     title
+                                    number
                                 }
                             }
                         }
