@@ -1,6 +1,5 @@
 package com.example.project_matcher
 
-import android.content.Context
 import android.os.Bundle
 import android.widget.Button
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -17,7 +16,6 @@ class AuthActivity : FirebaseAuthProvider() {
         findViewById<Button>(R.id.btnLogin).setOnClickListener { logIn() }
     }
 
-
     private fun logIn() {
         auth
             .startActivityForSignInWithProvider(this, provider.build())
@@ -26,7 +24,6 @@ class AuthActivity : FirebaseAuthProvider() {
                 val credential = it.credential as OAuthCredential;
                 val token = credential.accessToken
                 saveToken(token)
-
             }
             .addOnFailureListener {
                 findViewById<Button>(R.id.btnLogin).let {

@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_repo_list">
         <action
             android:id="@+id/action_repoListFragment_to_repoDetailFragment"
-            app:destination="@id/repoDetailFragment" />
+            app:destination="@id/repoDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_repoListFragment_to_topicListFragment"
             app:destination="@id/topicListFragment" />
@@ -39,7 +43,11 @@
         tools:layout="@layout/fragment_topic_list">
         <action
             android:id="@+id/action_topicListFragment_to_repoListFragment"
-            app:destination="@id/repoListFragment" />
+            app:destination="@id/repoListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
 </navigation>
