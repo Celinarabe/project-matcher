@@ -43,6 +43,7 @@
 
     <string name="topic10">Linux</string>
     <string name="desc10">Linux is an open source kernel.</string>
+    <string name="no_open_issues">No current open issues</string>
 
 
 </resources>

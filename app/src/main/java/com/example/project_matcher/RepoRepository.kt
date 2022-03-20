@@ -34,14 +34,13 @@ class RepoRepository (private val context: Context) {
                     label_input = "help wanted"
                 )
             ).execute()
-            val labelExists = response?.data?.topic?.repositories?.edges?.filter { it?.node?.label != null  }
+            val reposWithLabel = response?.data?.topic?.repositories?.edges?.filter { it?.node?.label != null  }
 
-            if (labelExists != null) {
-                return convertRepos(labelExists.filter { it!!.node?.label?.issues?.edges?.size!! >= 3 }.map{it!!})
+            if (reposWithLabel != null) {
+                return convertRepos(reposWithLabel.filter { it!!.node?.label?.issues?.edges?.size!! >= 3 }.map{it!!})
             }
             return null
         } catch (exception: Exception) {
-            Log.d("Lunch", exception.toString())
             return null
         }
     }
